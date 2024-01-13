@@ -26,7 +26,7 @@ namespace NetManager.Controllers
         public async Task<IActionResult> Index()
         {
               return _context.Workstation != null ? 
-                          View(await _context.Workstation.ToListAsync()) :
+                          Ok(await _context.Workstation.ToListAsync()) :
                           Problem("Entity set 'NetManagerContext.Workstation'  is null.");
         }
 
@@ -46,7 +46,7 @@ namespace NetManager.Controllers
                 return NotFound();
             }
 
-            return View(workstation);
+            return Ok(workstation);
         }
 
 
@@ -62,7 +62,7 @@ namespace NetManager.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(workstation);
+            return Ok(workstation);
         }
 
 
@@ -97,7 +97,7 @@ namespace NetManager.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(workstation);
+            return Ok(workstation);
         }
 
 
@@ -116,7 +116,7 @@ namespace NetManager.Controllers
             }
             
             await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
+            return Ok();
         }
 
         private bool WorkstationExists(int id)

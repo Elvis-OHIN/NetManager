@@ -1,14 +1,20 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
+
 
 namespace NetManager.Models
 {
+    [Index(nameof(CarteMere), IsUnique = true)]
     public class Workstation
     {
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
-        public string Model { get; set; }
-        public string Numero { get; set; }
+        public string IDProduct { get; set; }
+        public string OperatingSystem { get; set; }
+        public string Os { get; set; }
+        public string CarteMere { get; set; }
+        public string GPU { get; set; }
         public bool Statut { get; set; }
         public bool IsActive { get; set; }
         public bool IsEnable { get; set; }

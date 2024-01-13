@@ -3,7 +3,9 @@ using Microsoft.Extensions.DependencyInjection;
 using NetManager.Data;
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<NetManagerContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("NetManagerContext") ?? throw new InvalidOperationException("Connection string 'NetManagerContext' not found.")));
+    options.UseSqlite(builder.Configuration.GetConnectionString("NetManagerContext") ?? throw new InvalidOperationException("Connection string 'NetManagerContext' not found.")));
+//builder.Services.AddDbContext<NetManagerContext>(options =>
+  //  options.UseSqlServer(builder.Configuration.GetConnectionString("NetManagerContext") ?? throw new InvalidOperationException("Connection string 'NetManagerContext' not found.")));
 
 // Add services to the container.
 
